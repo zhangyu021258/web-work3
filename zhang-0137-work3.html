@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>外语读本交流夜 · Foreign Book Meetup</title>
+<style>
+    /* ============ 页面底色：暖草绿系的柔和渐变，中间浅、四周略深 ============ */
+    body {
+        font-family: "Songti SC", "SimSun", "Microsoft YaHei", serif;
+        background: radial-gradient(circle at 50% 0%, #d9f2cf 0%, #c7e8ba 45%, #b1d8a3 100%);
+        color: #33402d;
+        text-align: center;
+        padding: 46px 16px 60px 16px;
+        font-size: 16px;
+        line-height: 1.85;
+    }
+
+    /* ============ 主卡片 .page：除背景色外，其余属性按作业要求原样保留 ============ */
+    .page {
+        display: inline-block;
+        background-color: #e6f8e0;
+        box-shadow: 0 0 30px rgba(80, 58, 35, 0.25);
+        text-align: left;
+        max-width: 720px;
+    }
+
+    /* ============ 并集选择器：统一六个级别的标题样式 ============ */
+    h1, h2, h3, h4, h5, h6 {
+        color: #2f6b3e;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* ============ 顶部标题区 ============ */
+    .head {
+        padding: 48px 46px 30px 46px;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    }
+
+    .head h1 {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+        color: #1f5232;
+    }
+
+    .head .sub {
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        font-size: 13px;
+        color: #6b7f63;
+        letter-spacing: 1.5px;
+        margin: 14px 0 0 0;
+    }
+
+    /* 副标题不参与首字放大 */
+    p.sub::first-letter {
+        font-size: 100%;
+        font-weight: normal;
+        color: inherit;
+    }
+
+    /* ============ 活动介绍区 ============ */
+    .intro {
+        padding: 0 46px 8px 46px;
+    }
+
+    .intro h2 {
+        font-size: 22px;
+        margin: 0 0 6px 0;
+        padding: 0 0 10px 0;
+    }
+
+    .intro p {
+        margin: 16px 0;
+        text-align: justify;
+        text-indent: 2em;
+        font-size: 15.5px;
+        line-height: 2.05;
+    }
+
+    /* ============ ID 选择器：只作用于 p#intro，把它做成醒目的提示条 ============ */
+    p#intro {
+        font-size: 17px;
+        font-weight: bold;
+        color: #b4462f;
+        text-indent: 0;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.7);
+        border-left: 4px solid #b4462f;
+        padding: 14px 18px;
+        margin: 22px 0 4px 0;
+        border-radius: 6px;
+        letter-spacing: 0.5px;
+        line-height: 1.8;
+    }
+
+    /* ============ 报名表格区 ============ */
+    .signup {
+        padding: 0 46px 8px 46px;
+    }
+
+    .signup h3 {
+        font-size: 19px;
+        text-align: center;
+        margin: 0 0 16px 0;
+        letter-spacing: 1.5px;
+    }
+
+    .table-box {
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 6px 20px rgba(47, 107, 62, 0.12);
+        padding: 6px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        font-size: 13.5px;
+        background: #fbfff9;
+    }
+
+    th {
+        background: linear-gradient(180deg, #b9e2ab, #a7d899);
+        color: #1f4a2c;
+        font-weight: bold;
+        text-align: left;
+        padding: 11px 12px;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid #8cc47c;
+    }
+
+    td {
+        padding: 11px 12px;
+        line-height: 1.7;
+        border-bottom: 1px solid #e2f2dc;
+        color: #3c4a37;
+    }
+
+    /* 斑马纹 + 悬停高亮，长表格也看得清 */
+    table tr:nth-child(even) {
+        background-color: #f0fbec;
+    }
+
+    table tr:hover {
+        background-color: #e2f6d9;
+    }
+
+    /* ============ 后代选择器：div 里 table 里的 a，只强调报名名单中的姓名链接 ============ */
+    div table a {
+        font-weight: bold;
+        font-size: 115%;
+        color: #1f5232;
+        border-bottom: 1px dotted #6ea75f;
+    }
+
+    /* ============ 链接伪类：四种状态分别设置 ============ */
+    a:link {
+        color: #35724a;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #7d8a63;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #1c8a4d;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: #c0562f;
+        text-decoration: underline;
+    }
+
+    /* ============ 带类名的链接：一红一蓝，作为页面底部的两个主要出口 ============ */
+    a.red:link {
+        color: #b4462f;
+    }
+
+    a.red:visited {
+        color: #9a6a4e;
+    }
+
+    a.red:active {
+        color: #6d2a19;
+    }
+
+    a.blue:link {
+        color: #2f6f9e;
+    }
+
+    a.blue:visited {
+        color: #6d7f92;
+    }
+
+    a.blue:active {
+        color: #1b4564;
+    }
+
+    /* ============ 页面链接区 ============ */
+    .links {
+        padding: 6px 46px 18px 46px;
+        text-align: center;
+    }
+
+    .links div {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        padding: 18px 20px;
+        font-size: 16px;
+        line-height: 2.4;
+        letter-spacing: 0.5px;
+    }
+
+    /* ============ 伪元素：段落首字放大，做出一点杂志排版的感觉 ============ */
+    p::first-letter {
+        font-size: 185%;
+        font-weight: bold;
+        color: #2f6b3e;
+    }
+
+    /* ============ 伪元素：每个区块的第一行略微强调 ============ */
+    div::first-line {
+        letter-spacing: 1.2px;
+        color: #2f6b3e;
+    }
+
+    /* ============ 底部公告区 ============ */
+    .notice {
+        padding: 6px 46px 34px 46px;
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        font-size: 12.5px;
+        line-height: 2.1;
+        color: #5d6b55;
+        letter-spacing: 0.3px;
+    }
+
+    /* ============ 分隔线：用渐变模拟，不额外引入标签 ============ */
+    .divider {
+        height: 1px;
+        margin: 0 46px;
+        background: linear-gradient(to right, rgba(47, 107, 62, 0), rgba(47, 107, 62, 0.45), rgba(47, 107, 62, 0));
+    }
+
+    /* ============ 窄屏适配：缩小内边距与字号，保证手机上也读得舒服 ============ */
+    @media (max-width: 640px) {
+        body { padding: 20px 10px 40px 10px; }
+        .head { padding: 30px 20px 20px 20px; }
+        .head h1 { font-size: 21px; letter-spacing: 1px; }
+        .head .sub { font-size: 11px; letter-spacing: 0.5px; line-height: 1.9; }
+        .intro, .signup, .links, .notice { padding-left: 20px; padding-right: 20px; }
+        .divider { margin: 0 20px; }
+        .intro h2 { font-size: 18px; }
+        .intro p { font-size: 14px; text-indent: 0; }
+        p#intro { font-size: 14.5px; }
+        table { font-size: 11.5px; table-layout: fixed; }
+        th, td { padding: 8px 7px; word-break: break-all; }
+        .notice { font-size: 11.5px; }
+    }
+
+    /* ============ 更窄的屏幕（≤420px）：再收一档内边距与字号 ============ */
+    @media (max-width: 420px) {
+        body { padding: 12px 6px 30px 6px; }
+        .head { padding: 24px 14px 16px 14px; }
+        .head h1 { font-size: 17px; }
+        .head .sub { font-size: 10px; }
+        .intro, .signup, .links, .notice { padding-left: 14px; padding-right: 14px; }
+        .divider { margin: 0 14px; }
+        .intro p { font-size: 13px; }
+        table { font-size: 10.5px; }
+        th, td { padding: 7px 5px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- ========== ① 顶部标题区 ========== -->
+    <div class="head">
+        <h1>外语读本交流夜 · Foreign Book Meetup</h1>
+        <p class="sub">南风读书会　第十二期　2026 年 12 月 5 日　19:00　图书馆三楼阅读厅</p>
+    </div>
+
+    <div class="divider"></div><br>
+
+    <!-- ========== ② 活动介绍区 ========== -->
+    <div class="intro">
+        <h2 id="intro">本期主题：在另一种语言里，把世界重读一遍</h2>
+
+        <p>
+            每个人学外语的起点都不一样：有人是为了考试，有人是为了看原版剧，有人只是想在旅行时敢开口点一杯咖啡。但它们最终都通向同一件事——你开始用另一种语法去理解别人的生活。Foreign Book Meetup 就是为这件事准备的：带上你正在读的那本外语书，中英文都可以，读了多少不重要，重要的是你愿意讲出那句让你停下来的话。
+        </p>
+
+        <p>
+            我们不做朗读比赛，也不考发音。活动的前四十分钟是自由翻阅与随手记，你可以窝在窗边的沙发里把一章读完；后八十分钟围坐分享，每人用三分钟说一本书、一段话，或者说一个你查了三遍才明白的词。Every language is a different window, and tonight we open several of them at once.
+        </p>
+
+        <p>
+            现场会按语种分区摆放长桌，除英语外还有日语、法语和西班牙语的小角落，桌上放着词典、便签和一支公用铅笔。你可以随时换桌，也可以一直坐在同一张桌子边，把一本书读到散场。我们相信阅读本来就是慢的，而一群人一起慢下来，会比一个人更容易坚持。
+        </p>
+
+        <!-- 这个 p 使用 id="intro"，会被 p#intro 单独高亮成提示条 -->
+        <p id="intro">
+            重要提示：本次活动限 24 人，需提前报名；请自带一本外语读本，现场不提供借阅。
+        </p>
+    </div>
+
+    <br><div class="divider"></div><br>
+
+    <!-- ========== ③ 活动报名信息表格区 ========== -->
+    <div class="signup" id="signup">
+        <h3>本期共读名单与语言等级</h3>
+
+        <div class="table-box">
+            <table>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>语言等级</th>
+                    <th>携带读本</th>
+                    <th>报名状态</th>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td><a href="#signup">Oliver Bennett</a></td>
+                    <td>母语读者</td>
+                    <td>The Remains of the Day</td>
+                    <td>已确认</td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td><a href="#signup">苏念</a></td>
+                    <td>托福必读</td>
+                    <td>The Old Man and the Sea</td>
+                    <td>已确认</td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td><a href="#signup">陈亦舟</a></td>
+                    <td>雅思 7.0</td>
+                    <td>Norwegian Wood</td>
+                    <td>待确认</td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td><a href="#signup">林小满</a></td>
+                    <td>CET-6 冲刺</td>
+                    <td>Pride and Prejudice</td>
+                    <td>候补</td>
+                </tr>
+                <tr>
+                    <td>05</td>
+                    <td><a href="#signup">周予安</a></td>
+                    <td>日语 N2</td>
+                    <td>ノルウェイの森</td>
+                    <td>已确认</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <br><div class="divider"></div><br>
+
+    <!-- ========== ④ 页面链接区 ========== -->
+    <div class="links">
+        <div>
+            <a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">查看往期活动照片</a><br>
+            <a class="blue" href="https://zhangyu021258.github.io/web-work/zhang-0137-work2.html">在线咨询活动详情</a>
+        </div>
+    </div>
+
+    <br><div class="divider"></div><br>
+
+    <!-- ========== ⑤ 底部公告区：第一行会被 div::first-line 强调 ========== -->
+    <div class="notice">
+        活动时间：2026 年 12 月 5 日（周六）19:00 - 21:00，18:40 开始入场。<br>
+        活动地点：图书馆三楼阅读厅，从正门进馆后乘东侧电梯至三楼，出电梯右转即到。<br>
+        温馨提醒：阅读厅内请把手机调至静音；如需带走桌面的便签，请在离场前告知值班同学。
+    </div>
+
+    <br>
+
+</div>
+
+</body>
+</html>
